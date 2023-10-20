@@ -2,10 +2,7 @@
 
         * {
             box-sizing: border-box;
-            max-resolution: 12px;
-            border-radius: 12px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            color: #80808000;
+            
         }
 
         body {
