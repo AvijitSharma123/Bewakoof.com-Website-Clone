@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+   
+<link rel="stylesheet" href="addToCart.css">
+
+
+<body>
+    <div class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg" alt="" style="height: 30px; padding: 2px; width: 100;">
+            </div>
+        </div>
+    </div>
+    <div id="empty-cart-message">
+    <div  class="emptyPage" style="padding: 30px 0px 0px;">
+        <img src="https://images.bewakoof.com/images/doodles/empty-cart-page-doodle.png" title="Empty Cart Page Doodle" alt="Empty Cart Page Doodle" width="150px">
+    </div>
+    
+    <center>
+        <div class="clearFix">
+       
+            Nothing in the bag
+           
+        </div>
+        <div class="clearFix">
+       
+            <a class="success" href="#" style="padding: 10px; border: 2px solid; border-radius: 5px; display: inline-block; margin-top: 15px;">Continue Shopping</a>
+           
+        </div>
+    </center>
+    <div class="emptylisting" style="background-color: rgb(255, 255, 255);">
+        <hr style="height: 1px; border-width: 1px 0px 0px; border-top-style: solid; border-right-style: initial; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(204, 204, 204); border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+        <div style="margin: 20px auto;">
+            <span id="smallText">You could try one of these categories:</span>
+        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Men</td>
+                    
+                    <td class="searchCategories col-xs-6 noPd">
+                        <a class="blueText" href="/top-wear-for-men">Topwear</a>
+                    </td>
+
+                
+                    <td class="searchCategories col-xs-6 noPd">
+                        <a class="blueText" href="/men-bottom-wear-collection">Bottomwear</a>
+                    </td>
+                    <tr>
+                        <td></td>
+                        
+                        <td class="searchCategories col-xs-6 noPd">
+                            <a class="blueText" href="/footwear">Footwear</a>
+                        </td>
+                        <td class="searchCategories col-xs-6 noPd">
+                            <a class="blueText" href="/bestsellers-for-men">Bestsellers</a>
+                        </td>
+                    </tr>
+                  
+                </tr>
+               
+                <tr>
+                    <td>Women</td>
+                    <td class="searchCategories col-xs-6 noPd">
+                        <a class="blueText" href="/top-wear-for-women">Topwear</a>
+                    </td>
+                    <td class="searchCategories col-xs-6 noPd">
+                        <a class="blueText" href="/bottom-wear-for-women">Bottomwear</a>
+                    </td>
+                    <tr>
+                        <td></td>
+                        <td class="searchCategories col-xs-6 noPd">
+                            <a class="blueText" href="/bestsellers-for-women">Bestsellers</a>
+                        </td>
+                    </tr>
+                   
+                </tr>
+                <tr>
+                    <td>Mobile Covers</td>
+                    <td class="searchCategories col-xs-6 noPd">
+                        <a class="blueText" href="/mobile-covers-india">All Mobile Covers</a>
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+        
+        
+        
+        
+            </div>
+        
+  
+    <div style="margin-top: 0px; text-align: center; background: rgb(251, 251, 251);">
+        <img src="https://images.bewakoof.com/web/secure-payments-image.png" title="Secure Payments" alt="Secure Payments" style="max-width: 257px; width: 100%; margin: 10px auto;">
+    </div>
+</div>
+
+
+<div class="left-div">
+   
+    <div id="cart-items">
+       
+    </div>
+</div>
+<div class="right-div"> 
+    
+    <div id="price-summary" style="display: none; ">
+       <div style="background-color: grey;"><h5 style="margin-left: 3%;">PRICE SUMMARY</h5></div> 
+        <p>&nbsp;&nbsp;&nbsp;Total MRP:<span class="wordSpacing"> ₹<span id="total-mrp">0.00</span> </span></p>
+        <p>&nbsp;&nbsp;&nbsp;Shipping Charges: <span class="wordspacing">FREE</span></p>
+        <button id="continue-button">CONTINUE</button>
+        <div class="trustBaggeContainer d-flex flex-column"><div class="d-flex justify-content-between"><div class="d-flex flex-row  containerInner"><div class="d-flex flex-column align-items-center"><img style="width: 40px;" loading="lazy" alt="offer" src="https://images.bewakoof.com/web/cart-badge-trust.svg"><span class="ProductText" id="Wordspace">100% SECURE
+            PAYMENTS</span></div></div><div class="d-flex flex-row  containerInner"><div class="d-flex flex-column align-items-center"><img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/cart-easy-return.svg"><span class="ProductText" id="Wordsp">EASY RETURNS &amp;
+            QUICK REFUNDS</span></div></div><div class="d-flex flex-row  containerInner"><div class="d-flex flex-column align-items-center"><img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/quality-check.svg"><span class="ProductText" id="Wordspa">QUALITY
+            ASSURANCE</span></div></div></div></div>
+    </div>
+</div>
+
+   
+
+       
+
+</div>
+   
+</body>
+</html>
+<script>
+   var cartItems = JSON.parse(localStorage.getItem('addtobag')) || [];
+
+// Get the cart items container and the empty cart message element
+var cartItemsContainer = document.getElementById('cart-items');
+var emptyCartMessage = document.getElementById('empty-cart-message');
+var priceSummary = document.getElementById('price-summary');
+
+// Function to update the cart display
+function updateCartDisplay() {
+    // Clear the cart items container
+    cartItemsContainer.innerHTML = '';
+
+    // Check if the cart is empty
+    if (cartItems.length === 0) {
+        // Show the empty cart message
+        emptyCartMessage.style.display = 'block';
+        // Hide the PRICE SUMMARY
+        priceSummary.style.display = 'none';
+    } else {
+        // Hide the empty cart message
+        emptyCartMessage.style.display = 'none';
+        // Show the PRICE SUMMARY
+        priceSummary.style.display = 'block';
+
+        // Loop through the items and create a display for each
+        cartItems.forEach(function (item) {
+            var cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+
+            var itemImage = document.createElement('img');
+            itemImage.src = item.image_url;
+            // itemImage.alt = item.name;
+            itemImage.style.width = "100px";
+            itemImage.style.textAlign = "center";
+
+            cartItem.appendChild(itemImage);
+
+            var itemName = document.createElement('p');
+            itemName.textContent = item.name;
+            cartItem.appendChild(itemName);
+
+            var itemPrice = document.createElement('p');
+            itemPrice.textContent = '₹' + item.price;
+            cartItem.appendChild(itemPrice);
+            itemPrice.style.fontWeight="bold"
+
+            var strikedoffprice = document.createElement('p');
+            strikedoffprice.textContent = '₹' + item.strikedoffprice;
+            cartItem.appendChild(strikedoffprice);
+            strikedoffprice.setAttribute("id","strike")
+
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function () {
+                // Remove the item from the cart
+                var index = cartItems.indexOf(item);
+                if (index > -1) {
+                    cartItems.splice(index, 1);
+                    localStorage.setItem('addtobag', JSON.stringify(cartItems));
+                    // Update the cart display after removing the item
+                    updateCartDisplay();
+                }
+            });
+            cartItem.appendChild(removeButton);
+
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        // Update the Total MRP
+        updateTotalMRP();
+    }
+}
+
+// Function to calculate the Total MRP
+function calculateTotalMRP() {
+    var totalMRP = 0;
+    for (var i = 0; i < cartItems.length; i++) {
+        totalMRP += cartItems[i].price;
+    }
+    return totalMRP;
+}
+
+// Function to update the Total MRP in the HTML
+function updateTotalMRP() {
+    var totalMRPElement = document.getElementById('total-mrp');
+    var totalMRP = calculateTotalMRP();
+    totalMRPElement.textContent = totalMRP.toFixed(2); // Display with two decimal places
+}
+
+// Event listener for the "CONTINUE" button
+var continueButton = document.getElementById('continue-button');
+continueButton.addEventListener('click', function () {
+    // Redirect to the payments.html page
+    window.location.href = 'payment.html'; // corrected URL to 'payment.html'
+});
+
+// Initial update of the cart display
+updateCartDisplay();
+
+
+</script>
